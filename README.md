@@ -7,7 +7,7 @@ Personal website for Leo Cheang.
 
 ## Local development
 
-Prereqs: Node.js 20.19+ and Bun 1.2+
+Prereqs: Bun 1.3+ or Node.js 20.19+
 
 ```bash
 bun install

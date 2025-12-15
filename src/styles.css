@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+::selection {
+  background: color-mix(in oklab, #38bdf8 35%, transparent);
+}
+
+/* Subtle grid overlay for the background */
+.bg-grid-slate:before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(217, 119, 6, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.12) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at 30% 20%, rgba(0, 0, 0, 0.35), transparent 45%),
+    radial-gradient(circle at 70% 40%, rgba(0, 0, 0, 0.25), transparent 40%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.4), transparent 45%);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+    transition:
+      opacity 700ms ease,
+      transform 700ms ease;
+    will-change: opacity, transform;
+  }
+
+  [data-reveal].is-revealed {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
